@@ -1,0 +1,2256 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Home Provider | إدارة مالية العائلة</title>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- =========================
+       التطبيق
+  ========================== -->
+
+  <div class="app">
+
+    <!-- =========================
+         Sidebar
+    ========================== -->
+
+    <aside class="sidebar">
+
+      <div class="logo">
+
+        <div class="logo-icon">
+          🏠
+        </div>
+
+        <div class="logo-text">
+          <h2>Home Provider</h2>
+          <p>إدارة مالية العائلة</p>
+        </div>
+
+      </div>
+
+      <nav class="main-nav">
+
+        <button class="nav-btn active" data-page="dashboard">
+          <span>🏠</span>
+          <span>الرئيسية</span>
+        </button>
+
+        <button class="nav-btn" data-page="transactions">
+          <span>💳</span>
+          <span>العمليات</span>
+        </button>
+
+        <button class="nav-btn" data-page="statistics">
+          <span>📊</span>
+          <span>الإحصائيات</span>
+        </button>
+
+        <button class="nav-btn" data-page="budget">
+          <span>🎯</span>
+          <span>الميزانية والتوفير</span>
+        </button>
+
+        <button class="nav-btn" data-page="family">
+          <span>👨‍👩‍👧‍👦</span>
+          <span>العائلة</span>
+        </button>
+
+        <button class="nav-btn" data-page="debts">
+          <span>💰</span>
+          <span>الديون والسلف</span>
+        </button>
+
+        <button class="nav-btn" data-page="recurring">
+          <span>🔄</span>
+          <span>المصاريف المتكررة</span>
+        </button>
+
+        <button class="nav-btn" data-page="challenges">
+          <span>🏆</span>
+          <span>تحديات التوفير</span>
+        </button>
+
+        <button class="nav-btn" data-page="receipts">
+          <span>🧾</span>
+          <span>الفواتير</span>
+        </button>
+
+        <button class="nav-btn" data-page="reports">
+          <span>📄</span>
+          <span>التقارير</span>
+        </button>
+
+        <button class="nav-btn" data-page="settings">
+          <span>⚙️</span>
+          <span>الإعدادات</span>
+        </button>
+
+      </nav>
+
+      <div class="sidebar-footer">
+
+        <div class="app-version">
+          Home Provider 2.0
+        </div>
+
+      </div>
+
+    </aside>
+
+
+    <!-- =========================
+         Main
+    ========================== -->
+
+    <main class="main">
+
+      <!-- =========================
+           Dashboard
+      ========================== -->
+
+      <section id="dashboard" class="page active">
+
+        <header class="page-header">
+
+          <div>
+
+            <p class="welcome">
+              أهلاً بك 👋
+            </p>
+
+            <h1>
+              لوحة التحكم
+            </h1>
+
+            <p class="subtitle">
+              كل وضعك المالي في مكان واحد
+            </p>
+
+          </div>
+
+          <div class="header-actions">
+
+            <button class="secondary-btn" id="quickReportBtn">
+              📄 التقرير
+            </button>
+
+            <button class="add-btn" id="openTransactionModal">
+              ＋ إضافة عملية
+            </button>
+
+          </div>
+
+        </header>
+
+
+        <!-- الرصيد -->
+
+        <div class="balance-card">
+
+          <div>
+
+            <p>
+              الرصيد الحالي
+            </p>
+
+            <h2 id="balance">
+              0.00 د.أ
+            </h2>
+
+            <span id="balanceStatus">
+              ابدأ بإضافة أول عملية
+            </span>
+
+          </div>
+
+          <div class="balance-card-icon">
+            💰
+          </div>
+
+        </div>
+
+
+        <!-- إحصائيات سريعة -->
+
+        <div class="stats-grid">
+
+          <div class="stat-card">
+
+            <div class="stat-icon income-icon">
+              💰
+            </div>
+
+            <div>
+              <p>إجمالي الدخل</p>
+
+              <strong id="total-income">
+                0.00 د.أ
+              </strong>
+            </div>
+
+          </div>
+
+
+          <div class="stat-card">
+
+            <div class="stat-icon expense-icon">
+              💸
+            </div>
+
+            <div>
+              <p>إجمالي المصروف</p>
+
+              <strong id="total-expenses">
+                0.00 د.أ
+              </strong>
+            </div>
+
+          </div>
+
+
+          <div class="stat-card">
+
+            <div class="stat-icon saving-icon">
+              🎯
+            </div>
+
+            <div>
+              <p>التوفير هذا الشهر</p>
+
+              <strong id="monthly-saving">
+                0.00 د.أ
+              </strong>
+            </div>
+
+          </div>
+
+
+          <div class="stat-card">
+
+            <div class="stat-icon count-icon">
+              🧾
+            </div>
+
+            <div>
+              <p>عدد العمليات</p>
+
+              <strong id="transaction-count">
+                0
+              </strong>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- التحليل الذكي -->
+
+        <div class="smart-card">
+
+          <div class="smart-icon">
+            🧠
+          </div>
+
+          <div class="smart-content">
+
+            <div class="smart-title">
+              التحليل المالي الذكي
+            </div>
+
+            <h3 id="smartMessage">
+              أضف عمليات حتى أقدر أحلل وضعك المالي.
+            </h3>
+
+            <p id="smartDetails">
+              رح نساعدك تعرف وين بتروح مصاريفك وكيف توفر أكثر.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- الميزانية + الأهداف -->
+
+        <div class="two-columns">
+
+          <div class="card">
+
+            <div class="card-header">
+
+              <div>
+                <h3>
+                  الميزانية الشهرية
+                </h3>
+
+                <p id="dashboardBudgetText">
+                  لم يتم تحديد ميزانية
+                </p>
+              </div>
+
+              <span class="big-emoji">
+                💳
+              </span>
+
+            </div>
+
+            <div class="progress">
+
+              <div
+                id="dashboardBudgetProgress"
+                class="progress-bar">
+              </div>
+
+            </div>
+
+            <div class="progress-info">
+
+              <span id="dashboardBudgetSpent">
+                مصروف: 0.00 د.أ
+              </span>
+
+              <span id="dashboardBudgetRemaining">
+                متبقي: 0.00 د.أ
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="card">
+
+            <div class="card-header">
+
+              <div>
+                <h3>
+                  أقرب هدف
+                </h3>
+
+                <p id="dashboardGoalText">
+                  لا يوجد هدف
+                </p>
+              </div>
+
+              <span class="big-emoji">
+                🎯
+              </span>
+
+            </div>
+
+            <div class="progress">
+
+              <div
+                id="dashboardGoalProgress"
+                class="progress-bar saving">
+              </div>
+
+            </div>
+
+            <div class="progress-info">
+
+              <span id="dashboardGoalSaved">
+                موفر: 0.00 د.أ
+              </span>
+
+              <span id="dashboardGoalRemaining">
+                متبقي: 0.00 د.أ
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- تنبيهات -->
+
+        <div class="card">
+
+          <div class="card-header">
+
+            <div>
+
+              <h3>
+                🔔 تنبيهات مالية
+              </h3>
+
+              <p>
+                الأشياء التي تحتاج انتباهك
+              </p>
+
+            </div>
+
+          </div>
+
+          <div id="alertsContainer">
+
+            <div class="empty">
+              لا توجد تنبيهات حاليًا 👍
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- آخر العمليات -->
+
+        <div class="card">
+
+          <div class="card-header">
+
+            <div>
+
+              <h3>
+                آخر العمليات
+              </h3>
+
+              <p>
+                أحدث الحركات المالية
+              </p>
+
+            </div>
+
+            <button class="text-btn" id="viewAllTransactions">
+              عرض الكل
+            </button>
+
+          </div>
+
+          <div id="dashboardTransactions" class="transactions">
+
+            <div class="empty">
+              ما في عمليات لحد الآن 💸
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           Transactions
+      ========================== -->
+
+      <section id="transactions" class="page">
+
+        <header class="page-header">
+
+          <div>
+
+            <h1>
+              العمليات 💳
+            </h1>
+
+            <p class="subtitle">
+              إدارة جميع عمليات الدخل والمصروف
+            </p>
+
+          </div>
+
+          <button class="add-btn open-transaction-btn">
+            ＋ إضافة عملية
+          </button>
+
+        </header>
+
+
+        <div class="card filters">
+
+          <div class="filter-group">
+
+            <label>
+              البحث
+            </label>
+
+            <input
+              id="searchInput"
+              type="text"
+              placeholder="🔎 ابحث عن عملية...">
+
+          </div>
+
+
+          <div class="filter-group">
+
+            <label>
+              النوع
+            </label>
+
+            <select id="filterType">
+
+              <option value="all">
+                الكل
+              </option>
+
+              <option value="income">
+                💰 دخل
+              </option>
+
+              <option value="expense">
+                💸 مصروف
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="filter-group">
+
+            <label>
+              التصنيف
+            </label>
+
+            <select id="filterCategory">
+
+              <option value="all">
+                كل التصنيفات
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="filter-group">
+
+            <label>
+              فرد العائلة
+            </label>
+
+            <select id="filterMember">
+
+              <option value="all">
+                كل الأفراد
+              </option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+
+        <div id="allTransactions" class="card transactions">
+
+          <div class="empty">
+            لا توجد عمليات
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           Statistics
+      ========================== -->
+
+      <section id="statistics" class="page">
+
+        <header class="page-header">
+
+          <div>
+
+            <h1>
+              الإحصائيات 📊
+            </h1>
+
+            <p class="subtitle">
+              افهم عادات الإنفاق عند العائلة
+            </p>
+
+          </div>
+
+        </header>
+
+
+        <div class="stats-grid">
+
+          <div class="stat-card">
+
+            <div class="stat-icon">
+              📈
+            </div>
+
+            <div>
+              <p>متوسط المصروف</p>
+
+              <strong id="averageExpense">
+                0.00 د.أ
+              </strong>
+            </div>
+
+          </div>
+
+
+          <div class="stat-card">
+
+            <div class="stat-icon">
+              🔥
+            </div>
+
+            <div>
+              <p>أكبر تصنيف</p>
+
+              <strong id="biggestCategory">
+                -
+              </strong>
+            </div>
+
+          </div>
+
+
+          <div class="stat-card">
+
+            <div class="stat-icon">
+              💸
+            </div>
+
+            <div>
+              <p>أكبر عملية</p>
+
+              <strong id="biggestTransaction">
+                0.00 د.أ
+              </strong>
+            </div>
+
+          </div>
+
+
+          <div class="stat-card">
+
+            <div class="stat-icon">
+              📅
+            </div>
+
+            <div>
+              <p>مصروف هذا الشهر</p>
+
+              <strong id="statisticsMonthExpense">
+                0.00 د.أ
+              </strong>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- رسم شهري -->
+
+        <div class="card">
+
+          <div class="card-header">
+
+            <div>
+
+              <h3>
+                المصروف خلال الأشهر
+              </h3>
+
+              <p>
+                مقارنة مصاريف الأشهر
+              </p>
+
+            </div>
+
+            <span>
+              📊
+            </span>
+
+          </div>
+
+          <div id="monthlyChart" class="large-chart"></div>
+
+        </div>
+
+
+        <div class="two-columns">
+
+          <div class="card">
+
+            <div class="card-header">
+
+              <h3>
+                المصاريف حسب التصنيف
+              </h3>
+
+            </div>
+
+            <div id="categoryChart" class="chart"></div>
+
+          </div>
+
+
+          <div class="card">
+
+            <div class="card-header">
+
+              <h3>
+                المصاريف حسب أفراد العائلة
+              </h3>
+
+            </div>
+
+            <div id="memberChart" class="chart"></div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           Budget
+      ========================== -->
+
+      <section id="budget" class="page">
+
+        <header class="page-header">
+
+          <div>
+
+            <h1>
+              الميزانية والتوفير 🎯
+            </h1>
+
+            <p class="subtitle">
+              خطط لمصاريفك وحقق أهدافك
+            </p>
+
+          </div>
+
+        </header>
+
+
+        <div class="two-columns">
+
+          <div class="card form-card">
+
+            <div class="section-icon">
+              💳
+            </div>
+
+            <h3>
+              الميزانية الشهرية
+            </h3>
+
+            <p class="form-description">
+              حدد أقصى مبلغ تريد صرفه خلال الشهر.
+            </p>
+
+            <label>
+              قيمة الميزانية
+            </label>
+
+            <input
+              id="budgetInput"
+              type="number"
+              min="0"
+              step="0.01"
+              placeholder="مثال: 500">
+
+            <button id="saveBudget" class="primary-btn">
+              حفظ الميزانية
+            </button>
+
+          </div>
+
+
+          <div class="card form-card">
+
+            <div class="section-icon">
+              🎯
+            </div>
+
+            <h3>
+              إضافة هدف توفير
+            </h3>
+
+            <p class="form-description">
+              حدد هدفك وراقب تقدمك.
+            </p>
+
+            <label>
+              اسم الهدف
+            </label>
+
+            <input
+              id="goalName"
+              type="text"
+              placeholder="مثال: شراء هاتف">
+
+            <label>
+              المبلغ المطلوب
+            </label>
+
+            <input
+              id="goalAmount"
+              type="number"
+              min="0"
+              step="0.01"
+              placeholder="مثال: 1000">
+
+            <label>
+              المبلغ الموفر حاليًا
+            </label>
+
+            <input
+              id="goalSavedInput"
+              type="number"
+              min="0"
+              step="0.01"
+              placeholder="مثال: 250">
+
+            <button id="saveGoal" class="primary-btn">
+              إضافة الهدف
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="card">
+
+          <div class="card-header">
+
+            <div>
+
+              <h3>
+                أهداف التوفير
+              </h3>
+
+              <p>
+                تابع تقدم جميع أهدافك
+              </p>
+
+            </div>
+
+            <button class="secondary-btn" id="openGoalModal">
+              ＋ هدف جديد
+            </button>
+
+          </div>
+
+          <div id="goalsList" class="goals-grid">
+
+            <div class="empty">
+              لم تضف أي أهداف بعد 🎯
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           Family
+      ========================== -->
+
+      <section id="family" class="page">
+
+        <header class="page-header">
+
+          <div>
+
+            <h1>
+              العائلة 👨‍👩‍👧‍👦
+            </h1>
+
+            <p class="subtitle">
+              تابع مصاريف كل فرد
+            </p>
+
+          </div>
+
+          <button id="addMemberBtn" class="add-btn">
+            ＋ إضافة فرد
+          </button>
+
+        </header>
+
+        <div id="membersList" class="members-grid"></div>
+
+      </section>
+
+
+      <!-- =========================
+           Debts
+      ========================== -->
+
+      <section id="debts" class="page">
+
+        <header class="page-header">
+
+          <div>
+
+            <h1>
+              الديون والسلف 💰
+            </h1>
+
+            <p class="subtitle">
+              لا تنسى مين إله ومين عليه
+            </p>
+
+          </div>
+
+          <button id="addDebtBtn" class="add-btn">
+            ＋ إضافة دين
+          </button>
+
+        </header>
+
+
+        <div class="stats-grid">
+
+          <div class="stat-card">
+
+            <div class="stat-icon">
+              📥
+            </div>
+
+            <div>
+
+              <p>
+                إلي عند الآخرين
+              </p>
+
+              <strong id="totalOwedToMe">
+                0.00 د.أ
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <div class="stat-card">
+
+            <div class="stat-icon">
+              📤
+            </div>
+
+            <div>
+
+              <p>
+                عليّ للآخرين
+              </p>
+
+              <strong id="totalIOwe">
+                0.00 د.أ
+              </strong>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div id="debtsList" class="debt-list">
+
+          <div class="card empty">
+            لا توجد ديون مسجلة
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           Recurring
+      ========================== -->
+
+      <section id="recurring" class="page">
+
+        <header class="page-header">
+
+          <div>
+
+            <h1>
+              المصاريف المتكررة 🔄
+            </h1>
+
+            <p class="subtitle">
+              المصاريف التي تتكرر عليك بشكل دوري
+            </p>
+
+          </div>
+
+          <button id="addRecurringBtn" class="add-btn">
+            ＋ إضافة مصروف متكرر
+          </button>
+
+        </header>
+
+
+        <div id="recurringList" class="recurring-grid">
+
+          <div class="card empty">
+            لا توجد مصاريف متكررة
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           Challenges
+      ========================== -->
+
+      <section id="challenges" class="page">
+
+        <header class="page-header">
+
+          <div>
+
+            <h1>
+              تحديات التوفير 🏆
+            </h1>
+
+            <p class="subtitle">
+              وفر بطريقة ممتعة وحافظ على تقدمك
+            </p>
+
+          </div>
+
+          <button id="addChallengeBtn" class="add-btn">
+            ＋ تحدي جديد
+          </button>
+
+        </header>
+
+
+        <div class="challenge-banner">
+
+          <div class="challenge-banner-icon">
+            🏆
+          </div>
+
+          <div>
+
+            <h2>
+              تحدى نفسك!
+            </h2>
+
+            <p>
+              كل دينار توفره يقربك من هدفك.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div id="challengesList" class="challenges-grid">
+
+          <div class="card empty">
+            لا توجد تحديات حاليًا
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           Receipts
+      ========================== -->
+
+      <section id="receipts" class="page">
+
+        <header class="page-header">
+
+          <div>
+
+            <h1>
+              الفواتير 🧾
+            </h1>
+
+            <p class="subtitle">
+              احتفظ بفواتيرك ومعلومات مشترياتك
+            </p>
+
+          </div>
+
+          <div class="header-actions">
+
+            <!-- زر فتح إضافة فاتورة -->
+            <button id="addReceiptBtn" class="add-btn">
+              ＋ إضافة فاتورة
+            </button>
+
+            <!-- زر قراءة فاتورة بالكاميرا -->
+            <button
+              id="scanReceiptBtn"
+              class="secondary-btn">
+              📷 قراءة فاتورة
+            </button>
+
+          </div>
+
+        </header>
+
+
+        <div class="receipt-info">
+
+          <div class="info-icon">
+            📸
+          </div>
+
+          <div>
+
+            <h3>
+              قارئ الفواتير الذكي
+            </h3>
+
+            <p>
+              صوّر الفاتورة بالكاميرا وسيحاول التطبيق قراءة
+              اسم المحل والمبلغ والتاريخ تلقائيًا.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!--
+          مدخل الكاميرا.
+          مخفي ويُفتح عن طريق زر "قراءة فاتورة".
+        -->
+
+        <input
+          id="receiptCamera"
+          type="file"
+          accept="image/*"
+          capture="environment"
+          hidden
+        >
+
+
+        <!-- حالة قراءة الفاتورة -->
+
+        <div
+          id="ocrStatus"
+          class="ocr-status hidden">
+
+          <div class="ocr-spinner">
+            ⏳
+          </div>
+
+          <div>
+
+            <strong>
+              جاري قراءة الفاتورة...
+            </strong>
+
+            <p id="ocrProgress">
+              تجهيز الصورة...
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- نتيجة قراءة الفاتورة -->
+
+        <div
+          id="ocrResult"
+          class="ocr-result hidden">
+
+          <div class="ocr-result-header">
+
+            <div>
+
+              <h3>
+                ✅ تم تحليل الفاتورة
+              </h3>
+
+              <p>
+                راجع المعلومات قبل الحفظ
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="ocr-result-grid">
+
+            <div>
+
+              <span>
+                اسم المحل
+              </span>
+
+              <strong id="ocrStore">
+                -
+              </strong>
+
+            </div>
+
+            <div>
+
+              <span>
+                المبلغ
+              </span>
+
+              <strong id="ocrAmount">
+                -
+              </strong>
+
+            </div>
+
+            <div>
+
+              <span>
+                التاريخ
+              </span>
+
+              <strong id="ocrDate">
+                -
+              </strong>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div
+          id="receiptsList"
+          class="receipts-grid">
+
+          <div class="card empty">
+            لا توجد فواتير محفوظة
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           Reports
+      ========================== -->
+
+      <section id="reports" class="page">
+
+        <header class="page-header">
+
+          <div>
+
+            <h1>
+              التقارير 📄
+            </h1>
+
+            <p class="subtitle">
+              ملخص مالي واضح للعائلة
+            </p>
+
+          </div>
+
+          <button id="exportReportBtn" class="add-btn">
+            📤 تصدير البيانات
+          </button>
+
+        </header>
+
+
+        <div id="reportPreview" class="report-preview">
+
+          <div class="report-header">
+
+            <div>
+
+              <span>
+                Home Provider
+              </span>
+
+              <h2>
+                التقرير المالي
+              </h2>
+
+            </div>
+
+            <div id="reportDate">
+              -
+            </div>
+
+          </div>
+
+
+          <div class="report-summary">
+
+            <div>
+              <span>الدخل</span>
+
+              <strong id="reportIncome">
+                0.00 د.أ
+              </strong>
+            </div>
+
+            <div>
+              <span>المصروف</span>
+
+              <strong id="reportExpenses">
+                0.00 د.أ
+              </strong>
+            </div>
+
+            <div>
+              <span>الرصيد</span>
+
+              <strong id="reportBalance">
+                0.00 د.أ
+              </strong>
+            </div>
+
+            <div>
+              <span>التوفير</span>
+
+              <strong id="reportSaving">
+                0.00 د.أ
+              </strong>
+            </div>
+
+          </div>
+
+
+          <div class="report-section">
+
+            <h3>
+              أكثر التصنيفات صرفًا
+            </h3>
+
+            <div
+              id="reportCategories"
+              class="report-list">
+            </div>
+
+          </div>
+
+
+          <div class="report-section">
+
+            <h3>
+              ملاحظات التحليل الذكي
+            </h3>
+
+            <div
+              id="reportInsights"
+              class="insights">
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           Settings
+      ========================== -->
+
+      <section id="settings" class="page">
+
+        <header class="page-header">
+
+          <div>
+
+            <h1>
+              الإعدادات ⚙️
+            </h1>
+
+            <p class="subtitle">
+              تحكم بالتطبيق وبياناتك
+            </p>
+
+          </div>
+
+        </header>
+
+
+        <div class="card settings-card">
+
+          <div class="setting-row">
+
+            <div class="setting-info">
+
+              <div class="setting-icon">
+                🌙
+              </div>
+
+              <div>
+
+                <strong>
+                  الوضع الليلي
+                </strong>
+
+                <p>
+                  تغيير مظهر التطبيق
+                </p>
+
+              </div>
+
+            </div>
+
+            <button
+              id="themeBtn"
+              class="secondary-btn">
+              تشغيل
+            </button>
+
+          </div>
+
+
+          <div class="setting-row">
+
+            <div class="setting-info">
+
+              <div class="setting-icon">
+                💾
+              </div>
+
+              <div>
+
+                <strong>
+                  النسخ الاحتياطي
+                </strong>
+
+                <p>
+                  حفظ نسخة من جميع بياناتك
+                </p>
+
+              </div>
+
+            </div>
+
+            <button
+              id="exportDataBtn"
+              class="secondary-btn">
+              تصدير
+            </button>
+
+          </div>
+
+
+          <div class="setting-row">
+
+            <div class="setting-info">
+
+              <div class="setting-icon">
+                📥
+              </div>
+
+              <div>
+
+                <strong>
+                  استيراد البيانات
+                </strong>
+
+                <p>
+                  استعادة نسخة احتياطية
+                </p>
+
+              </div>
+
+            </div>
+
+            <button
+              id="importDataBtn"
+              class="secondary-btn">
+              استيراد
+            </button>
+
+            <input
+              id="importFile"
+              type="file"
+              accept=".json"
+              hidden
+            >
+
+          </div>
+
+
+          <div class="setting-row">
+
+            <div class="setting-info">
+
+              <div class="setting-icon">
+                🗑️
+              </div>
+
+              <div>
+
+                <strong>
+                  حذف جميع البيانات
+                </strong>
+
+                <p>
+                  حذف كل العمليات والأهداف والبيانات
+                </p>
+
+              </div>
+
+            </div>
+
+            <button
+              id="clearData"
+              class="danger-btn">
+              حذف الكل
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="about-card">
+
+          <div class="about-logo">
+            🏠
+          </div>
+
+          <h2>
+            Home Provider
+          </h2>
+
+          <p>
+            مساعدك لإدارة مالية العائلة
+          </p>
+
+          <span>
+            الإصدار 2.0
+          </span>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <!-- =====================================================
+       Modal: إضافة عملية
+  ====================================================== -->
+
+  <div
+    id="transactionModal"
+    class="modal hidden">
+
+    <div class="modal-box">
+
+      <button
+        id="closeTransactionModal"
+        class="close">
+        ×
+      </button>
+
+
+      <div class="modal-title">
+
+        <div class="modal-icon">
+          💳
+        </div>
+
+        <div>
+
+          <h2>
+            إضافة عملية
+          </h2>
+
+          <p>
+            سجل دخلك أو مصروفك
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <label>
+        نوع العملية
+      </label>
+
+      <div class="type-buttons">
+
+        <button
+          class="type-btn selected"
+          data-type="expense">
+          💸 مصروف
+        </button>
+
+        <button
+          class="type-btn"
+          data-type="income">
+          💰 دخل
+        </button>
+
+      </div>
+
+
+      <label>
+        المبلغ
+      </label>
+
+      <input
+        id="amount"
+        type="number"
+        min="0"
+        step="0.01"
+        placeholder="0.00">
+
+
+      <label>
+        الوصف
+      </label>
+
+      <input
+        id="description"
+        type="text"
+        placeholder="مثال: مشتريات البيت">
+
+
+      <label>
+        التصنيف
+      </label>
+
+      <select id="category">
+
+        <option value="طعام">
+          🍔 طعام
+        </option>
+
+        <option value="منزل">
+          🏠 منزل
+        </option>
+
+        <option value="تسوق">
+          🛒 تسوق
+        </option>
+
+        <option value="مواصلات">
+          🚗 مواصلات
+        </option>
+
+        <option value="فواتير">
+          💡 فواتير
+        </option>
+
+        <option value="تعليم">
+          📚 تعليم
+        </option>
+
+        <option value="صحة">
+          💊 صحة
+        </option>
+
+        <option value="ترفيه">
+          🎮 ترفيه
+        </option>
+
+        <option value="ملابس">
+          👕 ملابس
+        </option>
+
+        <option value="سفر">
+          ✈️ سفر
+        </option>
+
+        <option value="أخرى">
+          📦 أخرى
+        </option>
+
+      </select>
+
+
+      <label>
+        فرد العائلة
+      </label>
+
+      <select id="member">
+      </select>
+
+
+      <label>
+        طريقة الدفع
+      </label>
+
+      <select id="paymentMethod">
+
+        <option value="cash">
+          💵 كاش
+        </option>
+
+        <option value="card">
+          💳 بطاقة
+        </option>
+
+        <option value="wallet">
+          📱 محفظة إلكترونية
+        </option>
+
+        <option value="bank">
+          🏦 بنك
+        </option>
+
+      </select>
+
+
+      <label>
+        ملاحظة
+      </label>
+
+      <textarea
+        id="note"
+        placeholder="ملاحظة اختيارية..."></textarea>
+
+
+      <button
+        id="saveTransaction"
+        class="primary-btn">
+        حفظ العملية
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       Modal: إضافة فرد
+  ====================================================== -->
+
+  <div
+    id="memberModal"
+    class="modal hidden">
+
+    <div class="modal-box">
+
+      <button
+        id="closeMemberModal"
+        class="close">
+        ×
+      </button>
+
+
+      <div class="modal-title">
+
+        <div class="modal-icon">
+          👨‍👩‍👧‍👦
+        </div>
+
+        <div>
+
+          <h2>
+            إضافة فرد
+          </h2>
+
+          <p>
+            أضف فردًا للعائلة
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <label>
+        الاسم
+      </label>
+
+      <input
+        id="memberName"
+        type="text"
+        placeholder="مثال: أحمد">
+
+
+      <label>
+        الصورة / الإيموجي
+      </label>
+
+      <input
+        id="memberEmoji"
+        type="text"
+        value="👤"
+        maxlength="4">
+
+
+      <button
+        id="saveMember"
+        class="primary-btn">
+        إضافة الفرد
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       Modal: إضافة دين
+  ====================================================== -->
+
+  <div
+    id="debtModal"
+    class="modal hidden">
+
+    <div class="modal-box">
+
+      <button
+        id="closeDebtModal"
+        class="close">
+        ×
+      </button>
+
+
+      <div class="modal-title">
+
+        <div class="modal-icon">
+          💰
+        </div>
+
+        <div>
+
+          <h2>
+            إضافة دين
+          </h2>
+
+          <p>
+            سجل السلفة أو الدين
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <label>
+        الشخص
+      </label>
+
+      <input
+        id="debtPerson"
+        type="text"
+        placeholder="مثال: محمد">
+
+
+      <label>
+        المبلغ
+      </label>
+
+      <input
+        id="debtAmount"
+        type="number"
+        min="0"
+        step="0.01"
+        placeholder="0.00">
+
+
+      <label>
+        نوع الدين
+      </label>
+
+      <select id="debtType">
+
+        <option value="owedToMe">
+          📥 إلي عنده
+        </option>
+
+        <option value="iOwe">
+          📤 عليّ إله
+        </option>
+
+      </select>
+
+
+      <label>
+        ملاحظة
+      </label>
+
+      <textarea
+        id="debtNote"
+        placeholder="ملاحظة..."></textarea>
+
+
+      <button
+        id="saveDebt"
+        class="primary-btn">
+        حفظ الدين
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       Modal: مصروف متكرر
+  ====================================================== -->
+
+  <div
+    id="recurringModal"
+    class="modal hidden">
+
+    <div class="modal-box">
+
+      <button
+        id="closeRecurringModal"
+        class="close">
+        ×
+      </button>
+
+
+      <div class="modal-title">
+
+        <div class="modal-icon">
+          🔄
+        </div>
+
+        <div>
+
+          <h2>
+            مصروف متكرر
+          </h2>
+
+          <p>
+            مثل الإنترنت أو الاشتراكات
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <label>
+        اسم المصروف
+      </label>
+
+      <input
+        id="recurringName"
+        type="text"
+        placeholder="مثال: الإنترنت">
+
+
+      <label>
+        المبلغ
+      </label>
+
+      <input
+        id="recurringAmount"
+        type="number"
+        min="0"
+        step="0.01"
+        placeholder="0.00">
+
+
+      <label>
+        التصنيف
+      </label>
+
+      <select id="recurringCategory">
+
+        <option value="فواتير">
+          💡 فواتير
+        </option>
+
+        <option value="منزل">
+          🏠 منزل
+        </option>
+
+        <option value="تعليم">
+          📚 تعليم
+        </option>
+
+        <option value="ترفيه">
+          🎮 ترفيه
+        </option>
+
+        <option value="أخرى">
+          📦 أخرى
+        </option>
+
+      </select>
+
+
+      <label>
+        التكرار
+      </label>
+
+      <select id="recurringFrequency">
+
+        <option value="monthly">
+          شهري
+        </option>
+
+        <option value="weekly">
+          أسبوعي
+        </option>
+
+      </select>
+
+
+      <button
+        id="saveRecurring"
+        class="primary-btn">
+        حفظ المصروف
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       Modal: تحدي
+  ====================================================== -->
+
+  <div
+    id="challengeModal"
+    class="modal hidden">
+
+    <div class="modal-box">
+
+      <button
+        id="closeChallengeModal"
+        class="close">
+        ×
+      </button>
+
+
+      <div class="modal-title">
+
+        <div class="modal-icon">
+          🏆
+        </div>
+
+        <div>
+
+          <h2>
+            تحدي توفير
+          </h2>
+
+          <p>
+            اصنع تحديك الخاص
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <label>
+        اسم التحدي
+      </label>
+
+      <input
+        id="challengeName"
+        type="text"
+        placeholder="مثال: 30 يوم بدون مطاعم">
+
+
+      <label>
+        الهدف
+      </label>
+
+      <input
+        id="challengeTarget"
+        type="number"
+        min="0"
+        step="0.01"
+        placeholder="مثال: 100">
+
+
+      <label>
+        الإنجاز الحالي
+      </label>
+
+      <input
+        id="challengeProgress"
+        type="number"
+        min="0"
+        step="0.01"
+        placeholder="0">
+
+
+      <button
+        id="saveChallenge"
+        class="primary-btn">
+        إنشاء التحدي
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       Modal: فاتورة
+  ====================================================== -->
+
+  <div
+    id="receiptModal"
+    class="modal hidden">
+
+    <div class="modal-box">
+
+      <button
+        id="closeReceiptModal"
+        class="close">
+        ×
+      </button>
+
+
+      <div class="modal-title">
+
+        <div class="modal-icon">
+          🧾
+        </div>
+
+        <div>
+
+          <h2>
+            إضافة فاتورة
+          </h2>
+
+          <p>
+            احفظ تفاصيل الفاتورة
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- قراءة بالكاميرا -->
+
+      <div class="receipt-scan-box">
+
+        <div class="receipt-scan-icon">
+          📷
+        </div>
+
+        <div>
+
+          <h3>
+            قراءة الفاتورة تلقائيًا
+          </h3>
+
+          <p>
+            صوّر الفاتورة وسيحاول التطبيق استخراج البيانات.
+          </p>
+
+        </div>
+
+        <button
+          id="modalScanReceiptBtn"
+          type="button"
+          class="secondary-btn">
+          📷 تصوير الفاتورة
+        </button>
+
+      </div>
+
+
+      <label>
+        اسم المحل
+      </label>
+
+      <input
+        id="receiptStore"
+        type="text"
+        placeholder="مثال: كارفور">
+
+
+      <label>
+        المبلغ
+      </label>
+
+      <input
+        id="receiptAmount"
+        type="number"
+        min="0"
+        step="0.01"
+        placeholder="0.00">
+
+
+      <label>
+        التاريخ
+      </label>
+
+      <input
+        id="receiptDate"
+        type="date">
+
+
+      <label>
+        ملاحظة
+      </label>
+
+      <textarea
+        id="receiptNote"
+        placeholder="تفاصيل الفاتورة..."></textarea>
+
+
+      <button
+        id="saveReceipt"
+        class="primary-btn">
+        حفظ الفاتورة
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       Toast
+  ====================================================== -->
+
+  <div
+    id="toast"
+    class="toast">
+  </div>
+
+
+  <!-- =====================================================
+       OCR - Tesseract
+       لازم يكون قبل script.js
+  ====================================================== -->
+
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+
+  <!-- التطبيق -->
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
